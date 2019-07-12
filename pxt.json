@@ -1,0 +1,15 @@
+{
+    "name": "Obloq_http",
+    "version": "0.0.1",
+    "description": "這是專為micro:bit提供的DFRobot Obloq積木(This is the HTTP blocks for DFRobot Obloq)",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "main.ts",
+        "_locales/zh-tw/Obloq_http-strings.json"
+    ],
+    "public": true
+}
