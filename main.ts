@@ -2,7 +2,7 @@
 /**
  *Obloq implementation method.
  */
-//% weight=10 color=#fcfc42 icon="\uf1eb" block="Obloq_http"
+//% weight=10 color=#096670 icon="\uf1eb" block="Obloq_http"
 namespace Obloq_http {
 
     let wInfo: string[][] = [
