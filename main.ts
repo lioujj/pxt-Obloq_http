@@ -9,7 +9,7 @@ namespace Obloq_http {
         ["weather", "main", "", "s"],
         ["description", "description", "", "s"],
         ["temperature", "\"temp\"", "", "k"],
-        ["humidity", "humidity", "", "n"],
+        ["humidity", "dity", "", "n"],
         ["temp_min", "temp_min", "", "k"],
         ["temp_max", "temp_max", "", "k"],
         ["speed", "speed", "", "n"],
