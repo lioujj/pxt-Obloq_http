@@ -237,6 +237,10 @@ namespace Obloq_http {
         Obloq_serial_init()
     }
 */
+    /**
+     * return the city ID in the world 
+     * 取得某個全球大都市的城市編號
+    */ 
     //% weight=97
     //% blockId=getObloq_IP
     //% block="get Obloq IP address"
@@ -252,7 +256,10 @@ namespace Obloq_http {
     export function getCityID(myCity: cityIDs): string {
         return ("" + myCity)
     }
- 
+    /**
+     * return the city ID in Taiwan 
+     * 取得台灣某個都市或是縣的城市編號
+    */ 
     //% weight=94
     //% blockId=getCity2ID
     //% block="get City ID of %myCity | in Taiwan"
@@ -260,6 +267,10 @@ namespace Obloq_http {
         return ("" + myCity)
     }
 
+    /**
+     * return the weather information about the city from http://openweathermap.org/ 
+     * 取得從 http://openweathermap.org/ 得到的某一項氣象資訊
+    */
     //% weight=93
     //% blockId=getWeatherInfo
     //% block="get weather data: %myInfo"
@@ -277,7 +288,7 @@ namespace Obloq_http {
     */
     //% weight=96
     //% blockId=setWeatherHttp
-    //% block="set city ID to get the weather: %myID | your OpenWeatherMap key %myKey"
+    //% block="set city ID to get the weather information: %myID | OpenWeatherMap key: %myKey"
     export function setWeatherHttp(myID: string, myKey: string): void {
         Obloq_serial_init()
         basic.showLeds(`
