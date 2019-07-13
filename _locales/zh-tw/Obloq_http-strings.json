@@ -42,10 +42,10 @@
     "Obloq_http.city2IDs.Penghu|block":"澎湖",
     "Obloq_http.city2IDs.Jincheng|block":"金門金城",
     "Obloq_http.city2IDs.Nangan|block":"馬祖南竿",
-    "Obloq_http.Obloq_WIFI_setup|block": "設定Oblo1腳位 | Rx(綠線): %receive| Tx(藍線): %send | Wi-Fi: | SSID: %SSID| 密碼: %PASSWORD|開始連線",
+    "Obloq_http.Obloq_WIFI_setup|block": "設定Obloq腳位 | Rx(綠線): %receive| Tx(藍線): %send | Wi-Fi: | SSID: %SSID| 密碼: %PASSWORD|開始連線",
     "Obloq_http.getObloq_IP|block": "取得Obloq的IP位址",
-    "Obloq_http.getCityID|block": "取得 %myCity | 的城市編號",
-    "Obloq_http.getCity2ID|block": "取得台灣 %myCity | 的城市編號",
-    "Obloq_http.getWeatherInfo|block": "取得| %myInfo |的資料",
-    "Obloq_http.setWeatherHttp|block": "設定城市編號: %myID | 設定你的OpenWeatherMap存取碼 %myKey | 以查詢該城市氣象資訊"
+    "Obloq_http.getCityID|block": "%myCity | 的城市編號",
+    "Obloq_http.getCity2ID|block": "台灣 %myCity | 的城市編號",
+    "Obloq_http.getWeatherInfo|block": "%myInfo|資料",
+    "Obloq_http.setWeatherHttp|block": "設定城市編號: %myID | OpenWeatherMap存取碼: %myKey | 並開始查詢氣象資訊"
 }
