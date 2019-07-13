@@ -138,7 +138,7 @@ namespace Obloq_http {
             OBLOQ_SERIAL_RX,
             BaudRate.BaudRate9600
         )
-        serial.setRxBufferSize(100)
+        serial.setRxBufferSize(200)
         serial.setTxBufferSize(100)
         obloqWriteString("\r")
         item = serial.readString()
