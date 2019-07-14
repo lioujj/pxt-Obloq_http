@@ -8,9 +8,20 @@ Liou Zheng-Ji\
 劉正吉\
 [my page, https://sites.google.com/jes.mlc.edu.tw/ljj/](https://sites.google.com/jes.mlc.edu.tw/ljj/)
 
-## Obloq_http
-Obloq_http is an extension for DFRobot Obloq WIFI module to get HTTP data from Internet.\
-[DFRobot Obloq, link here](https://www.dfrobot.com/product-1674.html)
+## Description
+The micro:bit extension is for DFRobot OBLOQ WIFI module to inquire the weather information of the cities around the world from the OpenWeather website.
+[DFRobot Obloq here, https://www.dfrobot.com/product-1674.html](https://www.dfrobot.com/product-1674.html)
+If you want to use the extension, at first, you have to regiser an account from OpenWeather to get a key to access the weather information.
+[the OpenWeather website here, https://openweathermap.org/](https://openweathermap.org/)
+
+## Video
+[![click here to see the sample video](https://img.youtube.com/vi/SMbRdlF9AEA/0.jpg)](https://www.youtube.com/watch?v=SMbRdlF9AEA)
+
+## Example:
+Press A to inquire the current weather information for Taipei in Taiwan.
+Press B to inquire the current weather information for the city that city ID is 1668341(as the same, Taipei)
+You can get the city ID from the file to search your own city. Download the file and extract it to find your city ID.
+[Download from http://bulk.openweathermap.org/sample/city.list.json.gz to get city ID](http://bulk.openweathermap.org/sample/city.list.json.gz)
 
 ## License
 
