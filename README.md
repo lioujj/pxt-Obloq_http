@@ -9,9 +9,9 @@ Liou Zheng-Ji\
 [my page, https://sites.google.com/jes.mlc.edu.tw/ljj/](https://sites.google.com/jes.mlc.edu.tw/ljj/)
 
 ## Description
-The micro:bit extension is for DFRobot OBLOQ WIFI module to inquire the weather information of the cities around the world from the OpenWeather website.
-[DFRobot Obloq here, https://www.dfrobot.com/product-1674.html](https://www.dfrobot.com/product-1674.html)
-If you want to use the extension, at first, you have to regiser an account from OpenWeather to get a key to access the weather information.
+The micro:bit extension is for DFRobot OBLOQ WIFI module to inquire the weather information of the cities around the world from the OpenWeather website.\
+[DFRobot Obloq here, https://www.dfrobot.com/product-1674.html](https://www.dfrobot.com/product-1674.html)\
+If you want to use the extension, at first, you have to regiser an account from OpenWeather to get a key to access the weather information.\
 [the OpenWeather website here, https://openweathermap.org/](https://openweathermap.org/)
 
 ## Video
