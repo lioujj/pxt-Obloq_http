@@ -1,12 +1,12 @@
-
 /**
  *Obloq implementation method.
  */
 //% weight=10 color=#096670 icon="\uf1eb" block="Obloq_http"
+//% groups=["03_ThingSpeak", "02_Weather", "01_System"]
 namespace Obloq_http {
 
     let wInfo: string[][] = [
-        ["weather", "main", "", "s"],
+        ["02_Weather", "main", "", "s"],
         ["description", "description", "", "s"],
         ["temperature", "\"temp\"", "", "k"],
         ["humidity", "dity", "", "n"],
@@ -22,7 +22,7 @@ namespace Obloq_http {
     export enum wType {
         //% block="city name"
         cityName = 10,
-        //% block="weather"
+        //% block="02_Weather"
         weather = 0,
         //% block="description"
         description = 1,
@@ -127,6 +127,15 @@ namespace Obloq_http {
     function obloqWriteString(text: string): void {
         serial.writeString(text)
     }
+    
+    /*
+    function startWork():void{
+        basic.clearScreen()
+        led.plot(1, 2)
+        led.plot(2, 2)
+        led.plot(3, 2)
+    }
+    */
 
     function Obloq_serial_init(): void {
         obloqWriteString("123")
@@ -144,6 +153,8 @@ namespace Obloq_http {
         item = serial.readString()
         obloqWriteString("|1|1|\r")
         item = serial.readUntil("\r")
+        item = serial.readString()
+        item = serial.readString()
         item = serial.readString()
         item = serial.readString()
         OBLOQ_SERIAL_INIT = true
@@ -200,7 +211,7 @@ namespace Obloq_http {
      * @param receive to receive ,eg: SerialPin.P1
      * @param send to send ,eg: SerialPin.P2
     */
-    //% weight=100
+    //% weight=100 group="01_System"
     //% receive.fieldEditor="gridpicker" receive.fieldOptions.columns=3
     //% send.fieldEditor="gridpicker" send.fieldOptions.columns=3
     //% blockId=Obloq_WIFI_setup
@@ -238,11 +249,11 @@ namespace Obloq_http {
     }
 */
     /**
-     * return the city ID in the world 
-     * 取得某個全球大都市的城市編號
+     * return the IP of your Obloq 
+     * 取得Obloq的IP
     */ 
-    //% weight=97
-    //% blockId=getObloq_IP
+    //% weight=97 group="01_System"
+    //% blockId=getObloq_IP blockGap=50
     //% block="get Obloq IP address"
     export function getObloq_IP(): string {
         if (OBLOQ_SERIAL_INIT && OBLOQ_WIFI_CONNECTED)
@@ -250,17 +261,23 @@ namespace Obloq_http {
         else
             return ""
     }
-    //% weight=95
+
+    /**
+     * return the city ID in the world 
+     * 取得某個全球大都市的城市編號
+    */ 
+    //% weight=95 group="02_Weather"
     //% blockId=getCityID
     //% block="get City ID of %myCity"
     export function getCityID(myCity: cityIDs): string {
         return ("" + myCity)
     }
+
     /**
      * return the city ID in Taiwan 
      * 取得台灣某個都市或是縣的城市編號
     */ 
-    //% weight=94
+    //% weight=94 group="02_Weather"
     //% blockId=getCity2ID
     //% block="get City ID of %myCity | in Taiwan"
     export function getCity2ID(myCity: city2IDs): string {
@@ -271,9 +288,9 @@ namespace Obloq_http {
      * return the weather information about the city from http://openweathermap.org/ 
      * 取得從 http://openweathermap.org/ 得到的某一項氣象資訊
     */
-    //% weight=93
+    //% weight=93 group="02_Weather"
     //% blockId=getWeatherInfo
-    //% block="get weather data: %myInfo"
+    //% block="get weather data: %myInfo" blockGap=50
     export function getWeatherInfo(myInfo: wType): string {
         return wInfo[myInfo][2]
     }
@@ -286,7 +303,7 @@ namespace Obloq_http {
      * @param myID to myID ,eg: "City Number"
      * @param myKey to myKey ,eg: "access key"
     */
-    //% weight=96
+    //% weight=96 group="02_Weather"
     //% blockId=setWeatherHttp
     //% block="set city ID to get the weather information: %myID | OpenWeatherMap key: %myKey"
     export function setWeatherHttp(myID: string, myKey: string): void {
@@ -354,4 +371,41 @@ namespace Obloq_http {
         }
     }
 
+    /**
+     * connect to https://thingspeak.com/ to store the data from micro:bit
+     * 連接到 https://thingspeak.com/ 儲存micro:bit所得到的感應器資料
+    */
+    //% weight=92 group="03_ThingSpeak"
+    //% blockId=saveToThingSpeak
+    //% expandableArgumentMode"toggle" inlineInputMode=inline
+    //% block="send data to ThingSpeak :| write key: %myKey field1: %field1 || field2: %field2 field3: %field3 field4: %field4 field5: %field5 field6: %field6 field7: %field7 field8: %field8"
+    export function saveToThingSpeak(myKey: string, field1:number, field2?:number, field3?:number, field4?:number, field5?:number, field6?:number, field7?:number, field8?:number): void {
+        Obloq_serial_init()
+        basic.showLeds(`
+        . . . . .
+        . . . . .
+        . # # # .
+        . . . . .
+        . . . . .
+        `)
+        let returnCode=""
+        let myArr:number[]=[field1,field2,field3,field4,field5,field6,field7,field8]
+        let myUrl = "http://api.thingspeak.com/update?api_key=" + myKey
+        for(let i=0;i<myArr.length;i++)
+        {
+            if (myArr[i]!=null)
+                myUrl+="&field"+(i+1)+"="+myArr[i]
+            else
+                break
+        }
+        serial.readString()
+        obloqWriteString("|3|1|" + myUrl + "|\r")
+        for (let i = 0; i < 3; i++) {
+            returnCode = serial.readUntil("|")
+        }
+        if (returnCode == "200")
+            basic.showIcon(IconNames.Yes)
+        else
+            basic.showIcon(IconNames.No)
+    }
 }
