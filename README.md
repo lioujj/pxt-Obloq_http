@@ -32,7 +32,7 @@ You can get the city ID from the file to search your own city. Download the file
 
 ## Example2: Send data to ThingSpeak
 When you power on the micro:bit attached OBLOQ WIFI module, the micro:bit will send temperature and light level data to ThingSpeak every 16 seconds. The ThingSpeak allow you to send data to it every 15 seconds one time, so the pause time do not less than 15 seconds.\
-The detail description to visit my website:\
+If you want the detail description, please visit my website:\
 [https://sites.google.com/jes.mlc.edu.tw/ljj/microbit開發板/microbit積木/thingspeak資料儲存積木](https://sites.google.com/jes.mlc.edu.tw/ljj/microbit開發板/microbit積木/thingspeak資料儲存積木)\
 ![image](images/example2.png)
 
