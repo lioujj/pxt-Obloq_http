@@ -13,7 +13,7 @@ Liou Zheng-Ji\
 The micro:bit extension is for DFRobot OBLOQ WIFI module to inquire the weather information of the cities around the world from the OpenWeather website.\
 [DFRobot Obloq here, https://www.dfrobot.com/product-1674.html](https://www.dfrobot.com/product-1674.html)\
 If you want to use the extension, at first, you have to regiser an account from OpenWeather to get a key to access the weather information.\
-[the OpenWeather website here, https://openweathermap.org/](https://openweathermap.org/)\
+[the OpenWeather website here, https://openweathermap.org/](https://openweathermap.org/)\\
 2.ThingSpeak\
 The ThingSpeak block can let you send the data from sensors to the ThingSpeak to let you analyze the huge data you collect by micro:bit.\n
 At first, you have to regiser an account, and create a channel to get a write key to access your data channel.
