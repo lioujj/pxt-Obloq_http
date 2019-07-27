@@ -2,7 +2,7 @@
  *Obloq implementation method.
  */
 //% weight=10 color=#096670 icon="\uf1eb" block="Obloq_http"
-//% groups=["03_ThingSpeak", "02_Weather", "01_System"]
+//% groups=["04_IFTTT","03_ThingSpeak", "02_Weather", "01_System"]
 namespace Obloq_http {
 
     let wInfo: string[][] = [
@@ -214,7 +214,7 @@ namespace Obloq_http {
     //% weight=100 group="01_System"
     //% receive.fieldEditor="gridpicker" receive.fieldOptions.columns=3
     //% send.fieldEditor="gridpicker" send.fieldOptions.columns=3
-    //% blockId=Obloq_WIFI_setup
+    //% blockId=Obloq_WIFI_setup blockGap=5
     //% block="Obloq setup WIFI | Pin set: | Receive data (green wire): %receive| Send data (blue wire): %send | Wi-Fi: | Name: %SSID| Password: %PASSWORD| Start connection"
     export function Obloq_WIFI_setup(/*serial*/receive: SerialPin, send: SerialPin,
                                      /*wifi*/SSID: string, PASSWORD: string
@@ -253,7 +253,7 @@ namespace Obloq_http {
      * 取得Obloq的IP
     */ 
     //% weight=97 group="01_System"
-    //% blockId=getObloq_IP blockGap=50
+    //% blockId=getObloq_IP blockGap=5
     //% block="get Obloq IP address"
     export function getObloq_IP(): string {
         if (OBLOQ_SERIAL_INIT && OBLOQ_WIFI_CONNECTED)
@@ -267,7 +267,7 @@ namespace Obloq_http {
      * 取得某個全球大都市的城市編號
     */ 
     //% weight=95 group="02_Weather"
-    //% blockId=getCityID
+    //% blockId=getCityID blockGap=5
     //% block="get City ID of %myCity"
     export function getCityID(myCity: cityIDs): string {
         return ("" + myCity)
@@ -278,7 +278,7 @@ namespace Obloq_http {
      * 取得台灣某個都市或是縣的城市編號
     */ 
     //% weight=94 group="02_Weather"
-    //% blockId=getCity2ID
+    //% blockId=getCity2ID blockGap=5
     //% block="get City ID of %myCity | in Taiwan"
     export function getCity2ID(myCity: city2IDs): string {
         return ("" + myCity)
@@ -289,8 +289,8 @@ namespace Obloq_http {
      * 取得從 http://openweathermap.org/ 得到的某一項氣象資訊
     */
     //% weight=93 group="02_Weather"
-    //% blockId=getWeatherInfo
-    //% block="get weather data: %myInfo" blockGap=50
+    //% blockId=getWeatherInfo blockGap=5
+    //% block="get weather data: %myInfo"
     export function getWeatherInfo(myInfo: wType): string {
         return wInfo[myInfo][2]
     }
@@ -304,7 +304,7 @@ namespace Obloq_http {
      * @param myKey to myKey ,eg: "access key"
     */
     //% weight=96 group="02_Weather"
-    //% blockId=setWeatherHttp
+    //% blockId=setWeatherHttp blockGap=5
     //% block="set city ID to get the weather information: %myID | OpenWeatherMap key: %myKey"
     export function setWeatherHttp(myID: string, myKey: string): void {
         Obloq_serial_init()
@@ -376,7 +376,7 @@ namespace Obloq_http {
      * 連接到 https://thingspeak.com/ 儲存micro:bit所得到的感應器資料
     */
     //% weight=92 group="03_ThingSpeak"
-    //% blockId=saveToThingSpeak
+    //% blockId=saveToThingSpeak blockGap=5
     //% expandableArgumentMode"toggle" inlineInputMode=inline
     //% block="send data to ThingSpeak :| write key: %myKey field1: %field1 || field2: %field2 field3: %field3 field4: %field4 field5: %field5 field6: %field6 field7: %field7 field8: %field8"
     export function saveToThingSpeak(myKey: string, field1:number, field2?:number, field3?:number, field4?:number, field5?:number, field6?:number, field7?:number, field8?:number): void {
@@ -395,6 +395,44 @@ namespace Obloq_http {
         {
             if (myArr[i]!=null)
                 myUrl+="&field"+(i+1)+"="+myArr[i]
+            else
+                break
+        }
+        serial.readString()
+        obloqWriteString("|3|1|" + myUrl + "|\r")
+        for (let i = 0; i < 3; i++) {
+            returnCode = serial.readUntil("|")
+        }
+        if (returnCode == "200")
+            basic.showIcon(IconNames.Yes)
+        else
+            basic.showIcon(IconNames.No)
+    }
+
+    /**
+     * connect to IFTTT to trig some event and notify you by LINE
+     * 連接到IFTTT並用Line通知發生了什麼事
+    */
+    //% weight=91 group="04_IFTTT"
+    //% blockId=sendToIFTTT blockGap=5
+    //% expandableArgumentMode"toggle" inlineInputMode=inline
+    //% block="send data to IFTTT to trig LINE Notify:| event name: %eventName| your key: %myKey || value1: %value1 value2: %value2 value3: %value3"
+    export function sendToIFTTT(eventName:string, myKey: string, value1?:number, value2?:number, value3?:number): void {
+        Obloq_serial_init()
+        basic.showLeds(`
+        . . . . .
+        . . . . .
+        . # # # .
+        . . . . .
+        . . . . .
+        `)
+        let returnCode=""
+        let myArr:number[]=[value1,value2,value3]
+        let myUrl = "http://maker.ifttt.com/trigger/"+eventName+"/with/key/" + myKey+"?"
+        for(let i=0;i<myArr.length;i++)
+        {
+            if (myArr[i]!=null)
+                myUrl+="&value"+(i+1)+"="+myArr[i]
             else
                 break
         }
