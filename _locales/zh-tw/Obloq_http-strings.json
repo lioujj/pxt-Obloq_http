@@ -48,5 +48,6 @@
     "Obloq_http.getCity2ID|block": "台灣 %myCity | 的城市編號",
     "Obloq_http.getWeatherInfo|block": "%myInfo|資料",
     "Obloq_http.setWeatherHttp|block": "設定城市編號: %myID | OpenWeatherMap存取碼: %myKey | 並開始查詢氣象資訊",
-    "Obloq_http.saveToThingSpeak|block": "傳送資料到ThingSpeak |寫入存取碼: %myKey field1: %field1 || field2: %field2 field3: %field3 field4: %field4 field5: %field5 field6: %field6 field7: %field7 field8: %field8"
+    "Obloq_http.saveToThingSpeak|block": "傳送資料到ThingSpeak |寫入存取碼: %myKey field1: %field1 || field2: %field2 field3: %field3 field4: %field4 field5: %field5 field6: %field6 field7: %field7 field8: %field8",
+    "Obloq_http.sendToIFTTT|block": "傳送資料到IFTTT觸發Line通知:| 事件名稱: %eventName| 存取金鑰: %myKey || value1: %value1 value2: %value2 value3: %value3"
 }
