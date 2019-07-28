@@ -18,7 +18,7 @@ If you want to use the extension, at first, you have to regiser an account from 
 2.ThingSpeak\
 The ThingSpeak block can let you send the data from sensors to the ThingSpeak to let you analyze the huge data you collect by micro:bit.\n
 At first, you have to regiser an account, and create a channel to get a write key to access your data channel.
-[the ThingSpeak website here, https://thingspeak.com/](https://thingspeak.com/)
+[the ThingSpeak website here, https://thingspeak.com/](https://thingspeak.com/)\
  \
 3.IFTTT\
 The IFTTT block can let you send the data from sensors to the IFTTT to trig the Line Notify to inform you that something is happened.\n
@@ -44,7 +44,7 @@ If you want the detail description, please visit my website:\
 ## Video2: Send data to ThingSpeak
 [![click here to see the sample video](https://img.youtube.com/vi/bQTu6bFurEA/0.jpg)](https://www.youtube.com/watch?v=bQTu6bFurEA)
 
-## Example3: Send data to ThingSpeak
+## Example3: Send data to IFTTT
 When you power on the micro:bit attached OBLOQ WIFI module, if the temperature more than 35 degrees Celsius, the micro:bit will send data to IFTTT to trig the Line Notify to you.\
 If you want the detail description, please visit my website:\
 [https://sites.google.com/jes.mlc.edu.tw/ljj/microbit開發板/microbit積木/ifttt積木](https://sites.google.com/jes.mlc.edu.tw/ljj/microbit開發板/microbit積木/ifttt積木)\
