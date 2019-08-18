@@ -410,13 +410,13 @@ namespace Obloq_http {
     }
 
     /**
-     * connect to IFTTT to trig some event and notify you by LINE
-     * 連接到IFTTT並用Line通知發生了什麼事
+     * connect to IFTTT to trig some event and notify you
+     * 連接到IFTTT觸發其他事件
     */
     //% weight=91 group="04_IFTTT"
     //% blockId=sendToIFTTT blockGap=5
     //% expandableArgumentMode"toggle" inlineInputMode=inline
-    //% block="send data to IFTTT to trig other thing:| event name: %eventName| your key: %myKey || value1: %value1 value2: %value2 value3: %value3"
+    //% block="send data to IFTTT to trig other event:| event name: %eventName| your key: %myKey || value1: %value1 value2: %value2 value3: %value3"
     export function sendToIFTTT(eventName:string, myKey: string, value1?:number, value2?:number, value3?:number): void {
         Obloq_serial_init()
         basic.showLeds(`
