@@ -416,7 +416,7 @@ namespace Obloq_http {
     //% weight=91 group="04_IFTTT"
     //% blockId=sendToIFTTT blockGap=5
     //% expandableArgumentMode"toggle" inlineInputMode=inline
-    //% block="send data to IFTTT to trig LINE Notify:| event name: %eventName| your key: %myKey || value1: %value1 value2: %value2 value3: %value3"
+    //% block="send data to IFTTT to trig other thing:| event name: %eventName| your key: %myKey || value1: %value1 value2: %value2 value3: %value3"
     export function sendToIFTTT(eventName:string, myKey: string, value1?:number, value2?:number, value3?:number): void {
         Obloq_serial_init()
         basic.showLeds(`
