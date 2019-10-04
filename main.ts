@@ -6,7 +6,7 @@
 namespace Obloq_http {
 
     let wInfo: string[][] = [
-        ["02_Weather", "main", "", "s"],
+        ["weather", "main", "", "s"],
         ["description", "description", "", "s"],
         ["temperature", "\"temp\"", "", "k"],
         ["humidity", "dity", "", "n"],
@@ -22,7 +22,7 @@ namespace Obloq_http {
     export enum wType {
         //% block="city name"
         cityName = 10,
-        //% block="02_Weather"
+        //% block="weather"
         weather = 0,
         //% block="description"
         description = 1,
