@@ -417,7 +417,7 @@ namespace Obloq_http {
     //% blockId=sendToIFTTT blockGap=5
     //% expandableArgumentMode"toggle" inlineInputMode=inline
     //% block="send data to IFTTT to trig other event:| event name: %eventName| your key: %myKey || value1: %value1 value2: %value2 value3: %value3"
-    export function sendToIFTTT(eventName:string, myKey: string, value1?:number, value2?:number, value3?:number): void {
+    export function sendToIFTTT(eventName:string, myKey: string, value1?:string, value2?:string, value3?:string): void {
         Obloq_serial_init()
         basic.showLeds(`
         . . . . .
@@ -427,7 +427,7 @@ namespace Obloq_http {
         . . . . .
         `)
         let returnCode=""
-        let myArr:number[]=[value1,value2,value3]
+        let myArr:string[]=[value1,value2,value3]
         let myUrl = "http://maker.ifttt.com/trigger/"+eventName+"/with/key/" + myKey+"?"
         for(let i=0;i<myArr.length;i++)
         {

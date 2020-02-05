@@ -1,6 +1,6 @@
 {
     "name": "Obloq_http",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "這是專為micro:bit提供的DFRobot Obloq積木(This is the HTTP blocks for DFRobot Obloq)",
     "license": "MIT",
     "dependencies": {
